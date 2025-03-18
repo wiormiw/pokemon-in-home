@@ -12,7 +12,6 @@ public class UserPokemon extends PanacheEntityBase {
     @Id
     @Column(name = "user_id")
     public Long userId;
-
     @Id
     @Column(name = "pokemon_id")
     public Long pokemonId;
