@@ -12,11 +12,6 @@ quarkus:
       password: password
   flyway:
     migrate-at-start: true
-  smallrye-jwt:
-    enabled: true
-    secret: "supersecretkey1234567890123456"
-    issuer: "github.com/wiormiw"
-    expires-in: 3600 # 1 hour in seconds
   redis:
     hosts: redis:6379
   grpc:
@@ -26,9 +21,20 @@ quarkus:
     export:
       prometheus:
         enabled: true
-  opentelemetry:
+  otel:
     enabled: true
-    tracer:
-      exporter:
-        otlp:
+    exporter:
+      otlp:
+        traces:
           endpoint: "http://otel-collector:4317"
+
+mt:
+  jwt:
+     verify:
+      issuer: "github.com/wiormiw"
+
+smallrye:
+  jwt:
+    verify:
+      secretkey: "supersecretkey1234567890123456"
+    time-to-live: 3600 # 1 hour in seconds
