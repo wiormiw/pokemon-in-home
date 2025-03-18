@@ -21,10 +21,10 @@ public class AuthService {
     private final RedisDataSource redisDataSource;
     private final ValueCommands<String, String> redisCommands;
 
-    @ConfigProperty(name = "quarkus.smallrye-jwt.issuer")
+    @ConfigProperty(name = "mp.jwt.verify.issuer")
     String issuer;
 
-    @ConfigProperty(name = "quarkus.smallrye-jwt.expires-in")
+    @ConfigProperty(name = "smallrye.jwt.time-to-live")
     long accessTokenExpiresInSeconds;
 
     private static final long REFRESH_TOKEN_EXPIRES_IN_SECONDS = 24 * 3600;
