@@ -12,7 +12,6 @@ public class Friends extends PanacheEntityBase {
     @Id
     @Column(name = "user_id")
     public Long userId;
-
     @Id
     @Column(name = "friend_id")
     public Long friendId;
