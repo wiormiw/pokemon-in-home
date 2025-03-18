@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.wiormiw.grpc.service";
+option java_outer_classname = "TradeServiceProto";
+
+service TradeService {
+    rpc RequestTrade (TradeRequest) returns (TradeResponse);
+    rpc ApproveTrade (TradeApproval) returns (TradeResponse);
+    rpc CancelTrade (TradeCancel) returns (TradeResponse);
+}
+
+message TradeRequest {
+    int64 requester_id = 1;
+    int64 target_id = 2;
+    int64 requester_pokemon_id = 3;
+    int64 target_pokemon_id = 4;
+}
+
+message TradeApproval {
+    int64 trade_id = 1;
+    bool approved = 2;
+    int64 target_id = 3;
+}
+
+message TradeCancel {
+    int64 trade_id = 1;
+    int64 requester_id = 2;
+}
+
+message TradeResponse {
+    string status = 1;
+    string message = 2;
+}
