@@ -16,6 +16,10 @@ public class Pokemon extends PanacheEntity {
     public BigDecimal catchRate;
     public String characteristic;
     @ManyToMany
-    @JoinTable(name = "pokemon_types", joinColumns = @JoinColumn(name = "pokemon_id"), inverseJoinColumns = @JoinColumn(name = "type"))
+    @JoinTable(
+            name = "pokemon_types",
+            joinColumns = @JoinColumn(name = "pokemon_id"),
+            inverseJoinColumns = @JoinColumn(name = "type")
+    )
     public List<String> types;
 }
