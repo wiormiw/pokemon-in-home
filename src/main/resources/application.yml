@@ -1,0 +1,34 @@
+quarkus:
+  http:
+    cors:
+      enabled: true
+      origins: "*"
+      methods: "GET,POST,PUT,DELETE"
+  datasource:
+    db-kind: postgresql
+    jdbc:
+      url: jdbc:postgresql://postgres:5432/pokemon
+      username: admin
+      password: password
+  flyway:
+    migrate-at-start: true
+  smallrye-jwt:
+    enabled: true
+    secret: "supersecretkey1234567890123456"
+    issuer: "github.com/wiormiw"
+    expires-in: 3600 # 1 hour in seconds
+  redis:
+    hosts: redis:6379
+  grpc:
+    server:
+      port: 9000
+  micrometer:
+    export:
+      prometheus:
+        enabled: true
+  opentelemetry:
+    enabled: true
+    tracer:
+      exporter:
+        otlp:
+          endpoint: "http://otel-collector:4317"
