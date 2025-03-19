@@ -27,10 +27,10 @@ public class TradeService {
         if (!friendsRepository.areFriends(requesterId, targetId)) {
             throw new PokemonException("You must be friends to trade!");
         }
-        if (!ownsPokemon(requesterId, requesterPokemonId)) {
+        if (ownsPokemon(requesterId, requesterPokemonId)) {
             throw new PokemonException("You don’t own the Pokémon you’re offering!");
         }
-        if (!ownsPokemon(targetId, targetPokemonId)) {
+        if (ownsPokemon(targetId, targetPokemonId)) {
             throw new PokemonException("The target doesn’t own the requested Pokémon!");
         }
 
@@ -54,7 +54,7 @@ public class TradeService {
         }
 
         if (approved) {
-            if (!ownsPokemon(trade.requesterId, trade.requesterPokemonId) || !ownsPokemon(trade.targetId, trade.targetPokemonId)) {
+            if (ownsPokemon(trade.requesterId, trade.requesterPokemonId) || ownsPokemon(trade.targetId, trade.targetPokemonId)) {
                 trade.status = "CANCELLED";
                 trade.persist();
                 notificationService.sendNotification(trade.requesterId, "Trade cancelled: One of the Pokémon is no longer available.");
@@ -88,7 +88,7 @@ public class TradeService {
     }
 
     private boolean ownsPokemon(Long userId, Long pokemonId) {
-        return userPokemonRepository.find("userId = ?1 and pokemonId = ?2", userId, pokemonId).firstResult() != null;
+        return !userPokemonRepository.isOwningPokemon(userId, pokemonId);
     }
 
     private void swapPokemon(Long userAId, Long userBId, Long pokemonAId, Long pokemonBId) {
