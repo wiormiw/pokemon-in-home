@@ -1,14 +1,9 @@
 package com.wiormiw.repository;
 
 import com.wiormiw.entity.Pokemon;
-import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
+import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 
-import java.util.List;
-
 @ApplicationScoped
-public class PokemonRepository extends PanacheEntityBase {
-    public List<Pokemon> findAllPokemon() {
-        return listAll();
-    }
+public class PokemonRepository implements PanacheRepository<Pokemon> {
 }

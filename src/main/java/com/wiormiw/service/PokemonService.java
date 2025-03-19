@@ -20,13 +20,13 @@ public class PokemonService {
     UserPokemonRepository userPokemonRepository;
 
     public List<PokemonDTO> getAllPokemon() {
-        return pokemonRepository.findAllPokemon().stream()
+        return pokemonRepository.findAll().stream()
                 .map(PokemonDTO::fromEntity)
                 .toList();
     }
 
     public PokemonDTO catchRandomPokemon(Long userId) {
-        List<Pokemon> wildPokemon = pokemonRepository.findAllPokemon();
+        List<Pokemon> wildPokemon = pokemonRepository.findAll().stream().toList();
         Pokemon randomPokemon = wildPokemon.get(new Random().nextInt(wildPokemon.size()));
         double roll = new Random().nextDouble() * 100;
         if (roll <= randomPokemon.catchRate.doubleValue()) {
