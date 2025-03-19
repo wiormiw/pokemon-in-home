@@ -1,6 +1,7 @@
 package com.wiormiw.dto;
 
 import com.wiormiw.entity.Pokemon;
+import com.wiormiw.entity.Type;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.List;
 public record PokemonDTO(
         Long id,
         String name,
-        List<String> types,
+        List<Type> types,
         String description,
         BigDecimal catchRate,
         String characteristic
