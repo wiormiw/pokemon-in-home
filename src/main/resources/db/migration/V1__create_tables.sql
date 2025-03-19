@@ -12,10 +12,15 @@ CREATE TABLE pokemon (
     characteristic VARCHAR(50) NOT NULL
 );
 
+CREATE TABLE types (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(50) NOT NULL UNIQUE
+);
+
 CREATE TABLE pokemon_types (
     pokemon_id INT REFERENCES pokemon(id),
-    type VARCHAR(50) NOT NULL,
-    PRIMARY KEY (pokemon_id, type)
+    type_id INT REFERENCES types(id),
+    PRIMARY KEY (pokemon_id, type_id)
 );
 
 CREATE TABLE user_pokemon (

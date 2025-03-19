@@ -1,3 +1,19 @@
+-- TYPE
+INSERT INTO types (name) VALUES
+('Electric'),
+('Grass'),
+('Poison'),
+('Fire'),
+('Water'),
+('Normal'),
+('Fairy'),
+('Rock'),
+('Ground'),
+('Ghost'),
+('Dragon'),
+('Dark');
+
+-- POKEMON
 INSERT INTO pokemon (name, description, catch_rate, characteristic) VALUES
 ('Pikachu', 'Electric mouse', 75.0, 'AGILE'),
 ('Bulbasaur', 'Seed Pokémon', 85.0, 'CALM'),
@@ -20,10 +36,31 @@ INSERT INTO pokemon (name, description, catch_rate, characteristic) VALUES
 ('Torchic', 'Chick Pokémon', 70.0, 'BOLD'),
 ('Mudkip', 'Mud Fish', 85.0, 'STEADY');
 
-INSERT INTO pokemon_types (pokemon_id, type) VALUES
-(1, 'Electric'), (2, 'Grass'), (2, 'Poison'), (3, 'Fire'), (4, 'Water'),
-(5, 'Normal'), (5, 'Fairy'), (6, 'Rock'), (6, 'Ground'), (7, 'Ghost'),
-(7, 'Poison'), (8, 'Normal'), (9, 'Normal'), (10, 'Dragon'), (11, 'Grass'),
-(12, 'Fire'), (13, 'Water'), (14, 'Fairy'), (15, 'Electric'), (16, 'Dark'),
-(16, 'Fire'), (17, 'Rock'), (17, 'Ground'), (18, 'Grass'), (19, 'Fire'),
-(20, 'Water');
+-- RELATIONSHIP (POKEMON & TYPE)
+INSERT INTO pokemon_types (pokemon_id, type_id) VALUES
+(1, 1),  -- Pikachu: Electric
+(2, 2),  -- Bulbasaur: Grass
+(2, 3),  -- Bulbasaur: Poison
+(3, 4),  -- Charmander: Fire
+(4, 5),  -- Squirtle: Water
+(5, 6),  -- Jigglypuff: Normal
+(5, 7),  -- Jigglypuff: Fairy
+(6, 8),  -- Geodude: Rock
+(6, 9),  -- Geodude: Ground
+(7, 10), -- Gastly: Ghost
+(7, 3),  -- Gastly: Poison
+(8, 6),  -- Eevee: Normal
+(9, 6),  -- Snorlax: Normal
+(10, 11), -- Dratini: Dragon
+(11, 2), -- Chikorita: Grass
+(12, 4), -- Cyndaquil: Fire
+(13, 5), -- Totodile: Water
+(14, 7), -- Togepi: Fairy
+(15, 1), -- Mareep: Electric
+(16, 12), -- Houndour: Dark
+(16, 4), -- Houndour: Fire
+(17, 8), -- Larvitar: Rock
+(17, 9), -- Larvitar: Ground
+(18, 2), -- Treecko: Grass
+(19, 4), -- Torchic: Fire
+(20, 5); -- Mudkip: Water
