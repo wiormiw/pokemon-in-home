@@ -13,7 +13,8 @@ quarkus:
   flyway:
     migrate-at-start: true
   redis:
-    hosts: redis:6379
+    hosts: redis://redis:6379
+
   grpc:
     server:
       port: 9000
@@ -28,10 +29,10 @@ quarkus:
         traces:
           endpoint: "http://otel-collector:4317"
 
-mt:
+mp:
   jwt:
      verify:
-      issuer: "github.com/wiormiw"
+      issuer: "https://github.com/wiormiw"
 
 smallrye:
   jwt:
